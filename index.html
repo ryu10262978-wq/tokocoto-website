@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>日帰りプランをえらぶ｜米沢みさわ小学校・とここと</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#EFEEEC;--card:#FFF;--ink:#2B2B2B;--sub:#6B6B6B;--line:#D6D3CD;
+  --accent:#E5A823;--accent-soft:#FBF4E4;--dark:#2B2B2B;
+  --ok:#1E7A46;--ng:#B4372B;--off:#8A8A8A;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#1B1B19;--card:#262521;--ink:#F2F0EC;--sub:#A8A49C;--line:#3C3A35;--accent-soft:#332B18;--dark:#131211;}}
+:root[data-theme="dark"]{--bg:#1B1B19;--card:#262521;--ink:#F2F0EC;--sub:#A8A49C;--line:#3C3A35;--accent-soft:#332B18;--dark:#131211;}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans JP','Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;font-size:15px;line-height:1.7;padding-bottom:110px}
+h1,h2,h3,.rd{font-family:'Zen Maru Gothic','Noto Sans JP',sans-serif}
+.wrap{max-width:1160px;margin:0 auto;padding:0 16px}
+.topbar{background:var(--card);border-bottom:1px dashed var(--line);padding:14px 0}
+.topbar .wrap{display:flex;gap:24px;flex-wrap:wrap;align-items:flex-end}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:12px;font-weight:700}
+input,select,textarea{font-family:inherit;font-size:16px;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:6px}
+.field input,.field select{height:48px;min-width:170px;padding:0 12px}
+.steps{display:flex;background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;margin:18px 0}
+.steps button{flex:1;min-height:56px;display:flex;align-items:center;justify-content:center;gap:8px;background:none;border:0;border-bottom:4px solid transparent;font:inherit;font-weight:700;color:var(--sub);cursor:pointer}
+.steps button+button{border-left:1px solid var(--line)}
+.steps button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.num{width:22px;height:22px;border-radius:50%;background:var(--line);color:var(--card);display:grid;place-items:center;font-size:12px;flex:none}
+.steps button[aria-selected="true"] .num{background:var(--accent);color:#2B2B2B}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:28px}
+.panel[hidden]{display:none}
+h2.pt{margin:0 0 6px;font-size:28px;font-weight:900}
+.lead{margin:0 0 22px;color:var(--sub);font-size:14px}
+.howto{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:20px}
+.howto div{border:1px solid var(--line);border-radius:6px;padding:16px;background:var(--bg)}
+.howto b{display:flex;align-items:center;gap:10px}
+.howto span.n{width:26px;height:26px;border-radius:50%;background:var(--accent);color:#2B2B2B;display:grid;place-items:center;font-size:13px;font-weight:700;flex:none}
+.howto p{margin:8px 0 0;font-size:13px;color:var(--sub)}
+.notice{background:var(--accent-soft);border-left:4px solid var(--accent);padding:14px 16px;font-size:13.5px;border-radius:4px}
+.pick{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:20px}
+.pick a{display:flex;align-items:center;justify-content:space-between;gap:12px;text-decoration:none;color:inherit;border:2px solid var(--ink);border-radius:8px;padding:20px;background:var(--card)}
+.pick a.on{background:var(--accent-soft);border-color:var(--accent)}
+.pick h3{margin:0;font-size:20px;font-weight:900}
+.pick p{margin:4px 0 0;font-size:12.5px;color:var(--sub)}
+.chev{width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--card);display:grid;place-items:center;flex:none}
+.pick a.on .chev{background:var(--accent);color:#2B2B2B}
+.filters{display:flex;background:var(--card);border:1px solid var(--line);border-radius:8px;margin-bottom:20px}
+.filters div{flex:1;min-height:52px;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--sub)}
+.filters div+div{border-left:1px dashed var(--line)}
+.center{text-align:center;margin:26px 0 22px}
+.center h2{margin:0;font-size:26px;font-weight:900}
+.center p{margin:6px 0 0;font-size:13.5px;color:var(--sub)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:20px}
+.plan{background:var(--card);border:1px solid var(--ink);border-radius:4px;display:flex;flex-direction:column;overflow:hidden}
+.plan.sel{outline:3px solid var(--accent)}
+.thumb{position:relative;aspect-ratio:4/3;background:var(--bg);display:grid;place-items:center;border-bottom:1px solid var(--line);color:var(--sub);font-size:13px;text-align:center;padding:8px;overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.radio{position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;background:var(--card);border:1px solid var(--line);display:grid;place-items:center;padding:0;cursor:pointer}
+.radio span{width:16px;height:16px;border-radius:50%;background:transparent}
+.plan.sel .radio span{background:var(--accent)}
+.plan .body{padding:14px;display:flex;flex-direction:column;gap:10px;flex:1}
+.plan h3{margin:0;font-size:15px;font-weight:700;line-height:1.5}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:11px;padding:2px 8px;border-radius:3px;background:var(--bg);color:var(--sub);border:1px solid var(--line)}
+.tag.day{background:#E8F0FA;color:#2B5C8F;border-color:#C6DAF0}
+.tag.meal{background:var(--accent-soft);color:#8A6412;border-color:#E9D7A8}
+.tag.new{background:var(--accent);color:#2B2B2B;border-color:var(--accent);font-weight:700}
+.cap{font-size:12.5px;color:var(--sub);margin:0}
+.btns{display:flex;gap:8px}
+.btns button{flex:1;min-height:44px;background:var(--card);border:1px solid var(--line);border-radius:4px;font:inherit;font-size:13px;color:var(--ink);cursor:pointer}
+.btns button.pri{border-color:var(--accent)}
+.price{font-size:13px;color:var(--sub);display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.price b{font-family:'Zen Maru Gothic',sans-serif;font-size:24px;font-weight:900;color:var(--ink)}
+.stat{font-size:13px;display:flex;align-items:center;gap:7px}
+.dot{width:9px;height:9px;border-radius:50%;flex:none}
+.s-ok{color:var(--ok)}.s-ok .dot{background:var(--ok)}
+.s-ng{color:var(--ng)}.s-ng .dot{background:var(--ng)}
+.s-off{color:var(--off)}.s-off .dot{background:var(--off)}
+.sum{border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-bottom:20px}
+.sum div{display:flex;justify-content:space-between;gap:16px;padding:14px 18px;font-size:14px}
+.sum div+div{border-top:1px dashed var(--line)}
+.sum .tot{background:var(--accent-soft);font-weight:700;font-size:16px}
+.flow{list-style:none;margin:0;padding:0}
+.flow li{display:flex;gap:14px;padding:12px 0;border-bottom:1px dashed var(--line);font-size:14px}
+.flow time{font-weight:700;min-width:64px;font-family:'Zen Maru Gothic',sans-serif}
+.edit{display:none;flex-direction:column;gap:8px;padding:12px;border-top:2px dashed var(--accent);background:var(--accent-soft)}
+body.editing .edit{display:flex}
+.edit label{font-size:11px;font-weight:700;display:flex;flex-direction:column;gap:4px}
+.edit input,.edit select,.edit textarea{font-size:14px;padding:7px 9px;width:100%}
+.edit .row{display:flex;gap:8px}
+.edit .row label{flex:1}
+.edit .del{min-height:40px;border:1px solid var(--ng);color:var(--ng);background:var(--card);border-radius:4px;font:inherit;font-size:13px;cursor:pointer}
+.editbar{display:none;gap:10px;flex-wrap:wrap;align-items:center;background:var(--accent-soft);border:1px solid var(--accent);border-radius:8px;padding:14px;margin-bottom:18px}
+body.canedit .editbar{display:flex}
+.editbar p{margin:0;flex:1;min-width:180px;font-size:13px}
+.editbar button{min-height:44px;padding:0 18px;border-radius:6px;border:1px solid var(--ink);background:var(--card);color:var(--ink);font:inherit;font-weight:700;cursor:pointer}
+.editbar button.on{background:var(--accent);border-color:var(--accent);color:#2B2B2B}
+footer{background:var(--dark);color:#F2F0EC;margin-top:34px;padding:44px 0}
+footer .wrap{display:flex;flex-direction:column;gap:16px;align-items:flex-start}
+footer .nm{font-family:'Zen Maru Gothic',sans-serif;font-size:19px;font-weight:900}
+footer a{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 20px;border:1px solid #F2F0EC;border-radius:6px;color:#F2F0EC;text-decoration:none;font-size:14px}
+footer small{color:#B9B5AD;font-size:12px}
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--dark);color:#F2F0EC;z-index:9;padding:12px 0;padding-bottom:calc(12px + env(safe-area-inset-bottom,0px))}
+.bar .wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.bar .lb{background:#4A4843;padding:3px 10px;border-radius:4px;font-size:12px;font-weight:700}
+.bar .msg{flex:1;min-width:150px;font-size:13.5px}
+.bar button{min-height:52px;padding:0 22px;border:0;border-radius:6px;font:inherit;font-weight:700;cursor:pointer}
+.bar .ask{background:transparent;color:#F2F0EC;border:1px solid #F2F0EC}
+.bar .go{background:var(--accent);color:#2B2B2B}
+.bar .go:disabled{background:#565349;color:#9C9891;cursor:not-allowed}
+.bar .go small{display:block;font-size:11px;font-weight:400}
+@media(max-width:640px){h2.pt,.center h2{font-size:22px}.panel{padding:18px}.filters{display:none}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap">
+  <div class="field"><label for="d">ご利用日</label><input type="date" id="d" value="2026-09-25"></div>
+  <div class="field"><label for="n">ご利用人数</label>
+    <select id="n"><option>大人 1</option><option>大人 2</option><option>大人 3</option>
+    <option selected>大人 4</option><option>大人 5</option><option>大人 6</option>
+    <option>大人 10</option><option>大人 20</option><option>大人 35</option></select>
+  </div>
+</div></div>
+
+<main class="wrap">
+  <div class="editbar">
+    <p id="estat">プラン名・料金・写真は、この画面から編集できます。変更は自動で保存されます。</p>
+    <button type="button" id="etog">編集する</button>
+    <button type="button" id="eadd" hidden>プランを追加</button>
+  </div>
+
+  <div class="steps" role="tablist">
+    <button role="tab" id="t0" aria-selected="true"><span class="num">✽</span>はじめに</button>
+    <button role="tab" id="t1" aria-selected="false"><span class="num">1</span>プラン</button>
+    <button role="tab" id="t2" aria-selected="false"><span class="num">✓</span>確認</button>
+  </div>
+
+  <section class="panel" id="p0" role="tabpanel">
+    <h2 class="pt">えらぶのは1つだけ</h2>
+    <p class="lead">日帰りプランをえらぶと、税込の合計料金と空き状況がその場で分かります。</p>
+    <div class="howto">
+      <div><b><span class="n">1</span>プランをえらぶ</b><p>BBQ・芋煮会・教室貸切・推しぬい巾着づくりなど。</p></div>
+      <div><b><span class="n">2</span>内容を確認する</b><p>合計料金とその日の流れを見て、triplaで予約へ。</p></div>
+    </div>
+    <p class="notice">えらび終わったら「予約に進む」から公式の予約システム（tripla）へ。このページでは予約は確定しません。</p>
+    <div class="pick">
+      <a href="https://simulator.misawa-tokokoto.com/"><div><h3>泊まる</h3><p>1泊2日〜。プラン→お部屋→オプションの3ステップ</p></div><span class="chev">›</span></a>
+      <a href="#p1" class="on" id="goDay"><div><h3>日帰りでつかう</h3><p>BBQ・芋煮会・教室貸切など。プランをえらぶだけ</p></div><span class="chev">›</span></a>
+    </div>
+  </section>
+
+  <section class="panel" id="p1" role="tabpanel" hidden>
+    <div class="filters"><div>空き状況 ⌄</div><div>館内マップ ⌄</div><div>基本情報 ⌄</div></div>
+    <div class="center"><h2>＼ プランを選ぶ ／</h2><p>写真と料金・空き状況を見比べて選べます</p></div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section class="panel" id="p2" role="tabpanel" hidden>
+    <h2 class="pt">内容を確認する</h2>
+    <p class="lead">この内容でよければ、予約システムへ進んでください。</p>
+    <div class="sum" id="sum"></div>
+    <h3 class="rd" style="font-size:18px;margin:0 0 6px">その日の流れ</h3>
+    <ul class="flow" id="flow"></ul>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <span class="nm">米沢みさわ小学校｜とここと</span>
+  <a href="https://misawa-tokokoto.com/">視察をご希望の方はこちら ↗</a>
+  <small id="asof"></small>
+</div></footer>
+
+<div class="bar"><div class="wrap">
+  <span class="lb">日帰り</span>
+  <span class="msg" id="msg">日帰りプランをえらんでください。</span>
+  <button class="ask" type="button">聞いてみる</button>
+  <button class="go" id="go" type="button" disabled>内容を確認する<small>予約まで あと1ステップ</small></button>
+</div></div>
+
+<script>
+const DEFAULTS=[
+ {id:'oshinui',t:'【新】推しの色の米沢織で つくる 推しぬい巾着｜山形県内から日帰り',
+  tags:['日帰り','人数課金','新プラン'],mode:'per',price:6000,cap:'',stat:'ok',imgUrl:'imgs/oshinui.jpg',
+  photo:'[写真：米沢織の巾着と推しぬい]',
+  detail:'米織小紋の端材から推しの色に合う一枚を選び、自分の手で巾着を仕上げる体験。所要40分。同じ柄は二度とない一点物。',
+  flow:[['10分','米沢織の説明'],['15分','16種類の柄から選ぶ'],['40分','手縫い'],['10分','紐選び・職人の仕上げ'],['5分','撮影']]},
+ {id:'bbqset',t:'【持ち込みBBQ】機材レンタルセット',tags:['日帰り','1組定額'],mode:'flat',price:6600,
+  cap:'6人がけセット 1組',stat:'ok',imgUrl:'imgs/bbqset.webp',photo:'[写真：夜の焚き火とBBQ]',
+  detail:'食材は持ち込み。コンロ・鉄板・テーブルのセットを貸し出します。',
+  flow:[['随時','受付・機材の受け取り'],['—','校庭でBBQ'],['—','片付け・返却']]},
+ {id:'class1h',t:'日帰り利用：教室貸切プラン（1時間）',tags:['日帰り','1枠定額'],mode:'flat',price:4000,
+  cap:'1枠あたり',stat:'ng',imgUrl:'imgs/class.webp',photo:'[写真：黒板のある教室]',
+  detail:'教室を1時間単位で貸切。研修・撮影・打ち合わせに。',flow:[['1時間','教室を貸切利用']]},
+ {id:'imoni',t:'【手ぶら米沢牛芋煮会】大人数OK｜会社・サークルに',tags:['日帰り','人数課金','昼食, 夕食'],
+  mode:'per',price:null,cap:'定員35名まで',stat:'off',imgUrl:'imgs/imoni.webp',photo:'[写真：芋煮の大鍋]',
+  detail:'食材も機材も用意済み。山形名物の芋煮を屋外で。',flow:[['—','受付'],['—','芋煮会'],['—','片付け']]},
+ {id:'yonegyu',t:'【手ぶら米沢牛BBQ】大人数OK｜大学ゼミ・サークル打ち上げ｜仙台から日帰り',
+  tags:['日帰り','人数課金','昼食, 夕食'],mode:'per',price:null,cap:'定員35名まで',stat:'off',imgUrl:'imgs/bbq.webp',
+  photo:'[写真：米沢牛のBBQ]',detail:'米沢牛の食材と機材つき。手ぶらで来られます。',
+  flow:[['—','受付'],['—','BBQ'],['—','片付け']]}
+];
+const S={ok:['s-ok','空きあり'],ng:['s-ng','満室／別日程をお試しください'],off:['s-off','この日程は対象外']};
+let plans=JSON.parse(JSON.stringify(DEFAULTS)), sel=null, db=null, assets=null, saving=false;
+const yen=v=>'¥'+Number(v).toLocaleString('ja-JP');
+const people=()=>parseInt(document.getElementById('n').value.replace(/[^0-9]/g,''),10)||1;
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const stat=()=>document.getElementById('estat');
+
+function priceLine(p){
+  if(p.price===null||p.price==='') return '<span class="price">料金は要確認</span>';
+  if(p.mode==='flat') return '<span class="price">定額 <b>'+yen(p.price)+'</b></span>';
+  return '<span class="price">'+people()+'名 <b>'+yen(p.price*people())+'</b><span class="tag">1名 '+yen(p.price)+'</span></span>';
+}
+function render(){
+  document.getElementById('grid').innerHTML=plans.map((p,i)=>{
+    const st=S[p.stat]||S.ok;
+    const src=p.imgUrl||'';
+    const thumb=src?'<img src="'+esc(src)+'" alt="">':esc(p.photo||'[写真]');
+    return '<article class="plan'+(sel===p.id?' sel':'')+'">'
+      +'<div class="thumb">'+thumb+'<button class="radio" data-id="'+esc(p.id)+'" aria-label="このプランをえらぶ"><span></span></button></div>'
+      +'<div class="body"><h3>'+esc(p.t)+'</h3>'
+      +'<div class="tags">'+(p.tags||[]).map(t=>'<span class="tag '+(t==='日帰り'?'day':t.indexOf('食')>=0?'meal':t==='新プラン'?'new':'')+'">'+esc(t)+'</span>').join('')+'</div>'
+      +'<p class="cap">'+esc(p.cap)+'</p>'
+      +'<div class="btns"><button type="button" class="pri" data-detail="'+esc(p.id)+'">詳細</button><button type="button">別の日</button></div>'
+      +priceLine(p)
+      +'<span class="stat '+st[0]+'"><span class="dot"></span>'+st[1]+'</span></div>'
+      +'<div class="edit">'
+      +'<label>プラン名<input data-f="t" data-i="'+i+'" value="'+esc(p.t)+'"></label>'
+      +'<div class="row"><label>料金（円）<input type="number" min="0" step="100" data-f="price" data-i="'+i+'" value="'+(p.price===null?'':p.price)+'" placeholder="未定"></label>'
+      +'<label>課金<select data-f="mode" data-i="'+i+'"><option value="per"'+(p.mode==='per'?' selected':'')+'>1名あたり</option><option value="flat"'+(p.mode==='flat'?' selected':'')+'>1組・1枠定額</option></select></label></div>'
+      +'<div class="row"><label>定員の表記<input data-f="cap" data-i="'+i+'" value="'+esc(p.cap)+'"></label>'
+      +'<label>空き<select data-f="stat" data-i="'+i+'"><option value="ok"'+(p.stat==='ok'?' selected':'')+'>空きあり</option><option value="ng"'+(p.stat==='ng'?' selected':'')+'>満室</option><option value="off"'+(p.stat==='off'?' selected':'')+'>対象外</option></select></label></div>'
+      +'<label>説明<textarea rows="2" data-f="detail" data-i="'+i+'">'+esc(p.detail)+'</textarea></label>'
+      +'<label>写真を選ぶ（ドラッグ＆ドロップ・貼り付けも可）<input type="file" accept="image/*" data-up="'+i+'"></label>'
+      +'<label>画像のパス／URL<input data-f="imgUrl" data-i="'+i+'" value="'+esc((p.imgUrl||'').slice(0,120))+'" placeholder="imgs/xxx.webp"></label>'
+      +'<button type="button" class="del" data-del="'+i+'">このプランを削除</button>'
+      +'</div></article>';
+  }).join('');
+  const p=plans.find(x=>x.id===sel);
+  document.getElementById('msg').textContent=p?p.t:'日帰りプランをえらんでください。';
+  document.getElementById('go').disabled=!p||p.stat!=='ok';
+  if(p) summary(p);
+}
+function summary(p){
+  const n=people();
+  const total=(p.price===null||p.price==='')?null:(p.mode==='per'?p.price*n:Number(p.price));
+  document.getElementById('sum').innerHTML=
+    '<div><span>プラン</span><span>'+esc(p.t)+'</span></div>'
+   +'<div><span>ご利用日</span><span>'+document.getElementById('d').value+'</span></div>'
+   +'<div><span>人数</span><span>'+n+'名</span></div>'
+   +'<div><span>料金の考え方</span><span>'+(p.mode==='per'?'1名あたり '+(total===null?'要確認':yen(p.price)):'1組・1枠あたり定額')+'</span></div>'
+   +'<div class="tot"><span>合計（税込）</span><span>'+(total===null?'要確認':yen(total))+'</span></div>'
+   +(p.mode==='per'&&total!==null?'<div><span>1名あたり</span><span>'+yen(Math.round(total/n))+'</span></div>':'');
+  document.getElementById('flow').innerHTML=(p.flow||[]).map(f=>'<li><time>'+esc(f[0])+'</time><span>'+esc(f[1])+'</span></li>').join('');
+}
+function step(i){[0,1,2].forEach(k=>{document.getElementById('t'+k).setAttribute('aria-selected',k===i);document.getElementById('p'+k).hidden=k!==i;});window.scrollTo({top:0,behavior:'smooth'});}
+function save(){
+  try{
+    localStorage.setItem('tokokoto-daytrip-plans',JSON.stringify(plans));
+    stat().textContent='この端末のブラウザに保存しました（公開内容を変えるにはファイルを更新してください）。';
+  }catch(e){ stat().textContent='保存できませんでした。'; }
+}
+document.addEventListener('click',function(e){
+  const r=e.target.closest('.radio'); if(r){sel=r.dataset.id;render();return;}
+  const d=e.target.closest('[data-detail]');
+  if(d){const p=plans.find(x=>x.id===d.dataset.detail);alert(p.t+'\n\n'+(p.detail||''));return;}
+  const del=e.target.closest('[data-del]');
+  if(del){ if(confirm('このプランを削除しますか？')){plans.splice(Number(del.dataset.del),1);render();save();} return;}
+  const t=e.target.closest('[role="tab"]'); if(t){step(Number(t.id.slice(1)));return;}
+  if(e.target.closest('#goDay')){e.preventDefault();step(1);return;}
+  if(e.target.closest('#go')){step(2);return;}
+  if(e.target.closest('.ask')){alert('お問い合わせは公式サイトの窓口からお願いします。');return;}
+  const tog=e.target.closest('#etog');
+  if(tog){
+    document.body.classList.toggle('editing');
+    const on=document.body.classList.contains('editing');
+    tog.classList.toggle('on',on);
+    tog.textContent=on?'編集を終える':'編集する';
+    document.getElementById('eadd').hidden=!on;
+    if(on) step(1);
+    return;
+  }
+  if(e.target.closest('#eadd')){
+    plans.push({id:'p'+Date.now(),t:'新しいプラン',tags:['日帰り'],mode:'per',price:null,cap:'定員 —',
+      stat:'ok',img:null,photo:'[写真]',detail:'',flow:[['—','—']]});
+    render(); save(); return;
+  }
+});
+document.addEventListener('input',function(e){
+  const f=e.target.dataset.f; if(!f) return;
+  const p=plans[Number(e.target.dataset.i)]; if(!p) return;
+  p[f]= f==='price' ? (e.target.value===''?null:Number(e.target.value)) : e.target.value;
+  if(f==='imgUrl'&&e.target.value) p.img=null;
+  if(f==='detail'){ clearTimeout(window._st); window._st=setTimeout(save,900); }
+  else { clearTimeout(window._rt); window._rt=setTimeout(function(){render();save();},700); }
+});
+async function putImage(idx,file){
+  if(!(file&&file.type&&file.type.indexOf('image/')===0)){stat().textContent='画像ファイルを選んでください。';return;}
+  if(!assets){stat().textContent='この画面では画像を保存できません。「画像のURLで指定」を使ってください。';return;}
+  stat().textContent='画像をアップロード中…（'+Math.round(file.size/1024)+'KB）';
+  try{
+    const res=await assets.upload(file);
+    plans[idx].img=res.id; plans[idx].imgUrl='';
+    render(); await save();
+    stat().textContent='画像を差し替えました。';
+  }catch(err){
+    const c=(err&&(err.code||err.message))||'error';
+    stat().textContent='画像をアップロードできませんでした（'+c+'）。大きすぎる場合は20MB以下に縮小してください。';
+  }
+}
+document.addEventListener('change',function(e){
+  if(e.target.id==='n'||e.target.id==='d'){render();return;}
+  const up=e.target.dataset.up;
+  if(up!==undefined&&e.target.files&&e.target.files[0]) putImage(Number(up),e.target.files[0]);
+});
+// ドラッグ＆ドロップ
+document.addEventListener('dragover',function(e){
+  if(document.body.classList.contains('editing')&&e.target.closest('.plan')) e.preventDefault();
+});
+document.addEventListener('drop',function(e){
+  if(!document.body.classList.contains('editing')) return;
+  const card=e.target.closest('.plan'); if(!card) return;
+  e.preventDefault();
+  const i=Array.prototype.indexOf.call(card.parentNode.children,card);
+  const f=e.dataTransfer&&e.dataTransfer.files&&e.dataTransfer.files[0];
+  if(f) putImage(i,f);
+});
+// 貼り付け（カードを選んでからCtrl+V）
+document.addEventListener('paste',function(e){
+  if(!document.body.classList.contains('editing')) return;
+  if(!sel) return;
+  const items=e.clipboardData&&e.clipboardData.items; if(!items) return;
+  for(const it of items){
+    if(it.type&&it.type.indexOf('image/')===0){
+      const f=it.getAsFile();
+      const i=plans.findIndex(x=>x.id===sel);
+      if(f&&i>=0){ e.preventDefault(); putImage(i,f); }
+      return;
+    }
+  }
+});
+document.getElementById('asof').textContent='このページは試作です。料金・在庫は公式の予約システムをご確認ください。';
+render();
+(function(){
+  document.body.classList.add('canedit');
+  try{
+    const saved=localStorage.getItem('tokokoto-daytrip-plans');
+    if(saved){ const v=JSON.parse(saved); if(Array.isArray(v)&&v.length){ plans=v; render(); } }
+  }catch(e){}
+  stat().textContent='編集内容はこの端末のブラウザにだけ保存されます。公開内容を変えるには index.html を更新してください。';
+})();
+</script>
+</body>
+</html>
