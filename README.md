@@ -22,7 +22,7 @@ GitHub Pages でそのまま公開できる静的サイトにしたものです�
 
 - トップページ：`hero.webp` / `stay-whole.webp` / `stay-dorm.webp` / `stay-room.webp` /
   `exp-sukiyaki.webp` / `exp-gym.webp` / `exp-imo.webp` / `exp-gamaguchi.webp` / `oshinui.jpg`
-- 日帰りプラン：`data/daytrip-plans.json` の `imgUrl` に書いたパス（例：`imgs/bbqset.webp`）
+- 日帰りプラン：`data/daytrip-plans.json` の `imgUrl` に書いたパス（例：`imgs/bbq.webp`）
 
 ## 日帰りプランを編集する
 
